@@ -5,31 +5,32 @@ import { FontLoader } from 'three/addons/loaders/FontLoader.js';
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
-//renderer.shadowMap.enabled = true;
+renderer.shadowMap.enabled = true;
 
-const plane = new THREE.Mesh(new THREE.PlaneGeometry(200,200), new THREE.MeshPhongMaterial({ color: 0x0a7d15}));
+const plane = new THREE.Mesh(new THREE.PlaneGeometry(500, 100), new THREE.MeshPhongMaterial({ color: 0x0a7d15}));
 plane.rotation.x = -Math.PI / 2;
 plane.receiveShadow = true;
 //scene.add(plane);
 //scene.add(new THREE.AmbientLight(0xffffff, 0.5));
 
 const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 500);
-camera.position.set(1000, 100, 100);
-camera.lookAt(100, 20, 20);
+camera.position.set(90, 50, 400);
+camera.lookAt(70, 20, 20);
+//camera.lookAt(geometry.position)
 
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(0xff0000);
+scene.background = new THREE.Color(0xffffff);
 
 const loader = new FontLoader();
 
 //let geometry; // Declare geometry outside the loader callback
-
+let text = 'H e l l o \n T H R E E j s \n';
 loader.load('helvetiker_regular.typeface.json', function (font) {
-    const geometry = new TextGeometry('Hello three.js!', {
+    const geometry = new TextGeometry(text, {
         font: font,
-        size: 80,
-        height: 5,
-        curveSegments: 12,
+        size: 40,
+        height: 4,
+        curveSegments: 3,
         bevelEnabled: true,
         bevelThickness: 10,
         bevelSize: 8,
@@ -39,11 +40,12 @@ loader.load('helvetiker_regular.typeface.json', function (font) {
 //});
 
     const textMaterial = new THREE.MeshPhongMaterial(
-        { color: 0x151500, specular: 0x15ff15 }
+        { color: 0xffff00, specular: 0xffffff }
     );
 
     const mesh = new THREE.Mesh(geometry, textMaterial);
     scene.add(mesh);
+	mesh.position.set(-90,80,0);
 	scene.add(plane);
 	scene.add(new THREE.AmbientLight(0xffffff, 0.5));
 
