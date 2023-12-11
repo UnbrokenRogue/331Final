@@ -2,17 +2,20 @@ import WebGL from 'three/addons/capabilities/WebGL.js';
 
 import * as THREE from 'three';
 
+
+
+//Create scene, camera, and renderer
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
-
 const renderer = new THREE.WebGLRenderer();
-renderer.setSize( window.innerWidth, window.innerHeight );
-document.body.appendChild( renderer.domElement );
 
-const geometry = new THREE.BoxGeometry( 1, 1, 1 );
+renderer.setSize( window.innerWidth, window.innerHeight );
+document.body.appendChild(renderer.domElement);
+
+const geometry = new THREE.BoxGeometry(2, 2, 2);
 const material = new THREE.MeshBasicMaterial( { color: 0x915301 } );
 scene.background = new THREE.Color(0x023b08);
-const cube = new THREE.Mesh( geometry, material );
+const cube = new THREE.Mesh(geometry, material);
 
 // var geometry1 = new THREE.EdgesGeometry( mesh.geometry ); // or WireframeGeometry
 // var material1 = new THREE.LineBasicMaterial( { color: 0xffff00, linewidth: 2 } );
@@ -25,7 +28,7 @@ scene.add( cube );
 camera.position.z = 5;
 
 
-
+//Animates the cube to rotate
 function animate() {
 	requestAnimationFrame( animate );
     cube.rotation.x += 0.02;

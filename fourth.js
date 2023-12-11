@@ -6,6 +6,7 @@ import init from './setup';
 
 const scene = init();
 const loader = new TTFLoader();
+scene.background = new THREE.Color(0x023b08);
 
 // Loading the TTF font file from Fontsource CDN. Can also be the link to font file from Google Fonts
 loader.load('https://api.fontsource.org/v1/fonts/lora/latin-600-italic.ttf', (fontData) => {
@@ -15,8 +16,8 @@ loader.load('https://api.fontsource.org/v1/fonts/lora/latin-600-italic.ttf', (fo
   // Create the text geometry
   const textGeometry = new TextGeometry('Hello world', {
     font: font,
-    size: 18,
-    height: 5,
+    size: 20,
+    height: 4,
     curveSegments: 32,
     bevelEnabled: true,
     bevelThickness: 0.5,
@@ -27,7 +28,7 @@ loader.load('https://api.fontsource.org/v1/fonts/lora/latin-600-italic.ttf', (fo
   // Create a standard material with red color and 50% gloss
   const material = new THREE.MeshStandardMaterial({
     color: 'hotpink',
-    roughness: 0.5
+    roughness: 0.1
   });
 
   // Geometries are attached to meshes so that they get rendered

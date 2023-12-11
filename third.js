@@ -14,12 +14,12 @@ plane.receiveShadow = true;
 //scene.add(new THREE.AmbientLight(0xffffff, 0.5));
 
 const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 500);
-camera.position.set(90, 50, 400);
-camera.lookAt(70, 20, 20);
+camera.position.set(80, 90, 400);
+camera.lookAt(70, 50, 20);
 //camera.lookAt(geometry.position)
 
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(0xffffff);
+scene.background = new THREE.Color(0xfaebd7);
 
 const loader = new FontLoader();
 
